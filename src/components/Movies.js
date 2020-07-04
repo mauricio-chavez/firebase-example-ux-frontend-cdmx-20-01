@@ -13,9 +13,11 @@ class Movies extends Component {
     firebase.auth().signOut();
   };
 
-  toggleModalVisibility = prevState => {
-    this.setState({
-      open: !prevState.open,
+  toggleModalVisibility = () => {
+    this.setState(prevState => {
+      return {
+        open: !prevState.open,
+      };
     });
   };
 
