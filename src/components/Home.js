@@ -3,10 +3,6 @@ import Movies from './Movies';
 import firebase from '../utils/firebase';
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     authenticated: false,
     email: '',
