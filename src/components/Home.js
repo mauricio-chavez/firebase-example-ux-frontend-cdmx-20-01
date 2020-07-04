@@ -5,17 +5,6 @@ import firebase from '../utils/firebase';
 class Home extends Component {
   constructor(props) {
     super(props);
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.setState({
-          authenticated: true,
-        });
-      } else {
-        this.setState({
-          authenticated: false,
-        });
-      }
-    });
   }
 
   state = {
@@ -39,10 +28,8 @@ class Home extends Component {
 
   signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      // .then();
+    firebase.auth().signInWithPopup(provider);
+    // .then();
   };
 
   render() {
@@ -81,6 +68,20 @@ class Home extends Component {
         </button>
       </div>
     );
+  }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          authenticated: true,
+        });
+      } else {
+        this.setState({
+          authenticated: false,
+        });
+      }
+    });
   }
 }
 
